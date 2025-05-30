@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kobal Arguiles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="myCustomAlert" class="custom-alert-overlay">
+        <div class="custom-alert-content">
+            <span class="close-button">&times;</span> <h2>Atenção!</h2>
+            <p>Você tem mais de 18 Anos?</p>
+            <button id="alertOkButton">Sim</button>
+        </div>
+    </div>
+    <header>
+        <img src="assets/capa-facebook KOBAL ARGUILES.png" alt="Logo Kobal" class="store-logo">
+        
+        <div class="cart-icon">
+            🛒 <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="product-list" class="product-list">
+            <h2>Nossos Produtos</h2>
+            </section>
+
+        <section id="cart-section" class="cart-section">
+            <h2>Carrinho de Compras</h2>
+            <div id="cart-items" class="cart-items">
+                <p id="empty-cart-message">Seu carrinho está vazio.</p>
+            </div>
+            <div class="cart-summary">
+                <p>Total: R$ <span id="cart-total">0.00</span></p>
+                <button id="checkout-btn">Finalizar Compra</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

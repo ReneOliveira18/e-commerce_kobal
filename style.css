@@ -1,0 +1,333 @@
+@import url('https://fonts.cdnfonts.com/css/lemonmilk');
+          
+
+body {
+    font-family: 'Lemon/Milk', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #847c7c;
+    color: #333;
+}
+
+/* Estilos para o Overlay (fundo escuro) */
+.custom-alert-overlay {
+    display: none; /* Escondido por padrão, JavaScript vai mostrar */
+    position: fixed; /* Fixo na tela, não rola com o conteúdo */
+    z-index: 1000; /* Garante que fique acima de todos os outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ocupa 100% da largura da viewport */
+    height: 100%; /* Ocupa 100% da altura da viewport */
+    background-color: rgba(0, 0, 0, 0.1); /* Fundo preto semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para o Conteúdo do Alerta */
+.custom-alert-content {
+    background-color: #fefefe;
+    padding: 25px 35px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
+    max-width: 450px; /* Largura máxima do alerta */
+    width: 90%; /* Ajusta para larguras menores */
+    text-align: center; /* Centraliza texto e botões dentro do alerta */
+    position: relative; /* Para posicionar o botão de fechar */
+}
+
+/* Estilos para o Título do Alerta */
+.custom-alert-content h2 {
+    color: #4d7728;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+/* Estilos para o Parágrafo da Mensagem */
+.custom-alert-content p {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Estilos para o Botão de Fechar (X) */
+.close-button {
+    color: #aaa;
+    float: right; /* Flutua para a direita no canto superior */
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute; /* Posiciona absolutamente dentro do .custom-alert-content */
+    top: 10px;
+    right: 15px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Estilos para o Botão Principal do Alerta */
+#alertOkButton {
+    background-color: #4d7728; /* Cor azul */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+#alertOkButton:hover {
+    background-color: #6aa444;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.store-logo{
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 250px;
+}
+
+.cart-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+#cart-count {
+    background-color: #ff0000;
+    color: white;
+    font-size: 14px;
+    border-radius: 50%;
+    padding: 2px 7px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px; /* Espaçamento entre as seções */
+    align-items: center;
+    padding-top: 30px;
+}
+
+#product-list.product-list {
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+width: 90%; /* Ocupa uma largura maior da tela */
+max-width: 1200px; /* Largura máxima para não ficar muito esticado */
+display: flex; /* Organiza os produtos em linha */
+flex-wrap: wrap; /* Permite que os produtos quebrem para a próxima linha se não houver espaço */
+justify-content: flex-start; /* Alinha os produtos à esquerda (ou use 'center' para centralizar) */
+gap: 15px; /* Espaçamento entre os produtos */
+}
+
+.product-list, .cart-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1; /* Permite que as seções cresçam e ocupem o espaço disponível */
+    min-width: 300px; /* Largura mínima para evitar que fiquem muito pequenas */
+}
+
+#product-list h2 {
+    width: 100%; /* Título ocupa toda a largura da seção */
+    text-align: center; /* Mantém o título centralizado */
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #4d7728;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para os produtos */
+.product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: calc(25% - 20px); /*4 items por linha*/
+    min-width: 150px; /*largura minina para um response melhor*/
+    box-sizing: border-box;
+}
+
+.product-item img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.product-item h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.product-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.product-item .price {
+    font-weight: bold;
+    color: #4d7728; /* Verde para o preço */
+    font-size: 17px;
+}
+
+.product-item button {
+    background-color: #4d7728;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.product-item button:hover {
+    background-color: #6aa444;
+}
+
+/* Estilo para o carrinho */
+.cart-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 90%; /* Para alinhar com a lista de produtos */
+    max-width: 1200px; /* Largura máxima */
+    min-width: 300px;
+}
+.cart-items {
+    min-height: 100px; /* Para manter o espaço mesmo vazio */
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-item-actions button {
+    background-color: #dc3545; /* Vermelho para remover */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cart-item-actions button:hover {
+    background-color: #c82333;
+}
+
+.cart-summary {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-summary button {
+    background-color: #4d7728; /* Verde para finalizar compra */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-summary button:hover {
+    background-color: #6aa444;
+}
+
+#empty-cart-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+/* Responsividade básica */
+@media (max-width: 900px) {
+    .product-item {
+    width: calc(50% - 15px); /* 2 itens por linha em telas menores */ 
+}
+}
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .product-list, .cart-section {
+        width: 100%;
+        max-width: 500px; /* Limita a largura em telas menores para melhor leitura */
+    }
+}    
+@media (max-width: 600px) {
+    .product-item {
+    width: 100%; /* 1 item por linha em telas ainda menores */
+    }   
+}
